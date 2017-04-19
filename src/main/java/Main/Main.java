@@ -28,6 +28,9 @@ public class Main extends Application {
 		stage = primaryStage;
 		stage.setMinWidth(WIGHT);
 		stage.setMinHeight(HEIGHT);
+		
+		loginScene = new Login(stage, this, WIGHT, HEIGHT);
+		
 		stage.setTitle("List To Do");
 		stage.show();
 		
