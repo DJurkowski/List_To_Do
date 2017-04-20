@@ -17,7 +17,7 @@ public class Main extends Application {
 
 	private final double WIGHT = 400;
 	private final double HEIGHT = 400;
-	
+
 	public static void main(String[] args) {
 		launch(args);
 	}
@@ -28,13 +28,13 @@ public class Main extends Application {
 		stage = primaryStage;
 		stage.setMinWidth(WIGHT);
 		stage.setMinHeight(HEIGHT);
-		
+
 		loginScene = new Login(stage, this, WIGHT, HEIGHT);
-		
+
 		stage.setTitle("List To Do");
 		stage.show();
-		
-		stage.setOnCloseRequest(e ->{
+
+		stage.setOnCloseRequest(e -> {
 			e.consume();
 			closeProgram();
 		});
@@ -42,10 +42,18 @@ public class Main extends Application {
 	}
 
 	private void closeProgram() {
-		Boolean answer = Asking.display("Exit","Do you want to leave");
-		if(answer == true){
+		Boolean answer = Asking.display("Exit", "Do you want to leave");
+		if (answer == true) {
 			stage.close();
 		}
+	}
+
+	public Login getLoginScene() {
+		return loginScene;
+	}
+
+	public void setLoginScene(Login loginScene) {
+		this.loginScene = loginScene;
 	}
 
 }

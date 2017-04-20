@@ -1,8 +1,11 @@
 package Database;
 
+import java.util.List;
+
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
+import javax.persistence.TypedQuery;
 
 /**
  *
@@ -35,7 +38,19 @@ public class MainDatabase {
 		entityManager.clear();
 		entityManagerFactory.close();
 	}
-	
-	
+
+	public static User findUser(String nick, String password) {
+		User result = null;
+
+		TypedQuery<User> query = entityManager.createQuery("Select * from User", User.class);
+		List<User> users = query.getResultList();
+
+		for (User user : users) {
+			if (user.getNick().equals(nick) && user.getPassword().equals(password)) {
+				result = user;
+			}
+		}
+		return result;
+	}
 
 }
