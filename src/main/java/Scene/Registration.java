@@ -1,6 +1,9 @@
 package Scene;
 
+import java.util.ArrayList;
+
 import Database.MainDatabase;
+import Database.Task;
 import Database.User;
 import Main.Main;
 import Safety.Alert;
@@ -116,7 +119,8 @@ public class Registration {
 		createButton.setOnAction(e -> {
 			if(validateDate(nameInput, emailInput, passInput, confirmPassInput) == true){
 				
-				//createUser();
+				createUser();
+				
 				Alert.display("Account", "Your account was created successfully");
 				stage.setScene(main.getLoginScene().getScene());
 			}else{
@@ -176,6 +180,8 @@ public class Registration {
 		user.setNick(nickInput.getText());
 		user.setEmail(emailInput.getText());
 		user.setPassword(passInput.getText());
+		
+		user.setTasksList(new ArrayList<Task>());
 		
 		MainDatabase.add(user);
 	}

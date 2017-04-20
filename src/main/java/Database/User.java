@@ -11,15 +11,17 @@ import javax.persistence.OneToMany;
 @Entity
 public class User {
 
-	@GeneratedValue
 	@Id
+	@GeneratedValue
+	private long id;
+
 	private String name;
 	private String nick;
 	private String password;
 	private String email;
 
 	@OneToMany
-	@JoinColumn(name = "User_id")
+	@JoinColumn(name = "userId")
 	private List<Task> tasksList;
 
 	public String getName() {
@@ -54,11 +56,19 @@ public class User {
 		this.nick = nick;
 	}
 
-	public List<Task> getTaskList() {
+	public long getId() {
+		return id;
+	}
+
+	public void setId(long id) {
+		this.id = id;
+	}
+
+	public List<Task> getTasksList() {
 		return tasksList;
 	}
 
-	public void setTaskList(List<Task> tasksList) {
+	public void setTasksList(List<Task> tasksList) {
 		this.tasksList = tasksList;
 	}
 

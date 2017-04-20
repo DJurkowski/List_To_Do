@@ -1,6 +1,9 @@
 package Scene;
 
+import Database.MainDatabase;
+import Database.User;
 import Main.Main;
+import Safety.Alert;
 import javafx.geometry.Insets;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
@@ -29,6 +32,7 @@ public class Login {
 	private Button loginButton;
 	private Button signButton;
 	
+	private User user;
 
 	public Login(Stage stage, Main main, double width, double height) {
 
@@ -82,15 +86,25 @@ public class Login {
 		loginButton = new Button("Log In");
 		GridPane.setConstraints(loginButton, 1, 2);
 		loginButton.setOnAction(e ->{
-			
+			user = MainDatabase.findUser(nameInput.getText(), passInput.getText());
+			if(checkUser() == false){
+				
+				Alert.display("Error", "Not found user");
+			}else {
+			new List(stage, main, width, height, user);
+			}
 		});
 		
-		signButton = new Button("Sign In");
+		signButton = new Button("Sign Up");
 		GridPane.setConstraints(signButton, 1, 3);
 		signButton.setOnAction(e ->{
 			new Registration(stage, main, width, height);
 			
 		});
+	}
+	
+	private boolean checkUser(){
+		return MainDatabase.find(nameInput.getText(), passInput.getText());
 	}
 
 	private void initScene() {

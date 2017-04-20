@@ -6,18 +6,16 @@ import javax.persistence.Id;
 
 @Entity
 public class Task {
-
-	@GeneratedValue
+	
 	@Id
+	@GeneratedValue
 	private long id;
+	
 	private String name;
 	private String description;
+	private String date;
 
-	/**
-	 * 
-	 * GETTERS AND SETTERS
-	 * 
-	 */
+	
 	public long getId() {
 		return id;
 	}
@@ -40,6 +38,14 @@ public class Task {
 
 	public void setDescription(String description) {
 		this.description = description;
+	}
+
+	public String getDate() {
+		return date;
+	}
+
+	public void setDate(String date) {
+		this.date = date;
 	}
 
 }

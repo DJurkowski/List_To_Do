@@ -1,5 +1,6 @@
 package Main;
 
+import Database.MainDatabase;
 import Safety.Asking;
 import Scene.Login;
 import javafx.application.Application;
@@ -14,6 +15,7 @@ public class Main extends Application {
 
 	private Stage stage;
 	private Login loginScene;
+	private MainDatabase mainDatabase;
 
 	private final double WIGHT = 400;
 	private final double HEIGHT = 400;
@@ -30,7 +32,8 @@ public class Main extends Application {
 		stage.setMinHeight(HEIGHT);
 
 		loginScene = new Login(stage, this, WIGHT, HEIGHT);
-
+		mainDatabase = new MainDatabase();
+		
 		stage.setTitle("List To Do");
 		stage.show();
 
@@ -54,6 +57,14 @@ public class Main extends Application {
 
 	public void setLoginScene(Login loginScene) {
 		this.loginScene = loginScene;
+	}
+
+	public MainDatabase getMainDatabase() {
+		return mainDatabase;
+	}
+
+	public void setMainDatabase(MainDatabase mainDatabase) {
+		this.mainDatabase = mainDatabase;
 	}
 
 }
