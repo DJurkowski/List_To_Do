@@ -1,8 +1,12 @@
 package Database;
 
+import java.util.List;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToMany;
 
 @Entity
 public class User {
@@ -13,6 +17,10 @@ public class User {
 	private String nick;
 	private String password;
 	private String email;
+
+	@OneToMany
+	@JoinColumn(name = "User_id")
+	private List<Task> tasksList;
 
 	public String getName() {
 		return name;
@@ -44,6 +52,14 @@ public class User {
 
 	public void setNick(String nick) {
 		this.nick = nick;
+	}
+
+	public List<Task> getTaskList() {
+		return tasksList;
+	}
+
+	public void setTaskList(List<Task> tasksList) {
+		this.tasksList = tasksList;
 	}
 
 }

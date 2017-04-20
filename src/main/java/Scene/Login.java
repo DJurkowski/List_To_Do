@@ -28,6 +28,7 @@ public class Login {
 	
 	private Button loginButton;
 	private Button signButton;
+	
 
 	public Login(Stage stage, Main main, double width, double height) {
 
@@ -87,13 +88,17 @@ public class Login {
 		signButton = new Button("Sign In");
 		GridPane.setConstraints(signButton, 1, 3);
 		signButton.setOnAction(e ->{
+			new Registration(stage, main, width, height);
 			
 		});
-		
 	}
 
 	private void initScene() {
 		
 		scene = new Scene(grid, width, height);
+	}
+
+	public Scene getScene() {
+		return scene;
 	}
 }
