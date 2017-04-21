@@ -8,6 +8,12 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
 
+/**
+*
+* @author Dominik Jurkowski <jurkowski.domink.andrzej@gmail.com>
+*
+*/
+
 @Entity
 public class User {
 
@@ -23,7 +29,13 @@ public class User {
 	@OneToMany
 	@JoinColumn(name = "userId")
 	private List<Task> tasksList;
-
+	
+	/**
+	 * 
+	 * GETTERS AND SETTERS
+	 * 
+	 */
+	
 	public String getName() {
 		return name;
 	}

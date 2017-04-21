@@ -1,5 +1,7 @@
 package Scene;
 
+import java.time.LocalDate;
+
 import Database.MainDatabase;
 import Database.User;
 import Main.Main;
@@ -12,6 +14,12 @@ import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.GridPane;
 import javafx.stage.Stage;
+
+/**
+*
+* @author Dominik Jurkowski <jurkowski.domink.andrzej@gmail.com>
+*
+*/
 
 public class Login {
 
@@ -33,6 +41,7 @@ public class Login {
 	private Button signButton;
 	
 	private User user;
+	private LocalDate date;
 
 	public Login(Stage stage, Main main, double width, double height) {
 
@@ -40,6 +49,7 @@ public class Login {
 		this.main = main;
 		this.width = width;
 		this.height = height;
+		this.date = LocalDate.now();
 		
 		initLabels();
 		initTextField();
@@ -91,7 +101,7 @@ public class Login {
 				
 				Alert.display("Error", "Not found user");
 			}else {
-			new List(stage, main, width, height, user);
+			new List(stage, main, width, height, user, date);
 			}
 		});
 		
@@ -106,6 +116,12 @@ public class Login {
 	private boolean checkUser(){
 		return MainDatabase.find(nameInput.getText(), passInput.getText());
 	}
+	
+	/**
+	 * 
+	 * GETTERS AND SETTERS
+	 * 
+	 */
 
 	private void initScene() {
 		

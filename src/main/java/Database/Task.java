@@ -1,8 +1,16 @@
 package Database;
 
+import java.time.LocalDate;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+
+/**
+*
+* @author Dominik Jurkowski <jurkowski.domink.andrzej@gmail.com>
+*
+*/
 
 @Entity
 public class Task {
@@ -13,8 +21,13 @@ public class Task {
 	
 	private String name;
 	private String description;
-	private String date;
-
+	private LocalDate date;
+	
+	/**
+	 * 
+	 * GETTERS AND SETTERS
+	 * 
+	 */
 	
 	public long getId() {
 		return id;
@@ -40,11 +53,11 @@ public class Task {
 		this.description = description;
 	}
 
-	public String getDate() {
+	public LocalDate getDate() {
 		return date;
 	}
 
-	public void setDate(String date) {
+	public void setDate(LocalDate date) {
 		this.date = date;
 	}
 

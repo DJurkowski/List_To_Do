@@ -2,6 +2,11 @@ package Safety;
 
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
+/**
+*
+* @author Dominik Jurkowski <jurkowski.domink.andrzej@gmail.com>
+*
+*/
 
 public class Validation {
 
