@@ -8,6 +8,12 @@ import javafx.scene.layout.VBox;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 
+/**
+*
+* @author Dominik Jurkowski <jurkowski.domink.andrzej@gmail.com>
+*
+*/
+
 public class Alert {
 
 	public static void display(String title, String massage) {

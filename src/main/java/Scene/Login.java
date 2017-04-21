@@ -1,6 +1,11 @@
 package Scene;
 
+import java.time.LocalDate;
+
+import Database.MainDatabase;
+import Database.User;
 import Main.Main;
+import Safety.Alert;
 import javafx.geometry.Insets;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
@@ -9,6 +14,12 @@ import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.GridPane;
 import javafx.stage.Stage;
+
+/**
+*
+* @author Dominik Jurkowski <jurkowski.domink.andrzej@gmail.com>
+*
+*/
 
 public class Login {
 
@@ -29,6 +40,8 @@ public class Login {
 	private Button loginButton;
 	private Button signButton;
 	
+	private User user;
+	private LocalDate date;
 
 	public Login(Stage stage, Main main, double width, double height) {
 
@@ -36,6 +49,7 @@ public class Login {
 		this.main = main;
 		this.width = width;
 		this.height = height;
+		this.date = LocalDate.now();
 		
 		initLabels();
 		initTextField();
@@ -82,16 +96,32 @@ public class Login {
 		loginButton = new Button("Log In");
 		GridPane.setConstraints(loginButton, 1, 2);
 		loginButton.setOnAction(e ->{
-			
+			user = MainDatabase.findUser(nameInput.getText(), passInput.getText());
+			if(checkUser() == false){
+				
+				Alert.display("Error", "Not found user");
+			}else {
+			new List(stage, main, width, height, user, date);
+			}
 		});
 		
-		signButton = new Button("Sign In");
+		signButton = new Button("Sign Up");
 		GridPane.setConstraints(signButton, 1, 3);
 		signButton.setOnAction(e ->{
 			new Registration(stage, main, width, height);
 			
 		});
 	}
+	
+	private boolean checkUser(){
+		return MainDatabase.find(nameInput.getText(), passInput.getText());
+	}
+	
+	/**
+	 * 
+	 * GETTERS AND SETTERS
+	 * 
+	 */
 
 	private void initScene() {
 		
